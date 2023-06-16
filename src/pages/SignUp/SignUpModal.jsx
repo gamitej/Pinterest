@@ -7,7 +7,7 @@ import BasicModal from "../../components/Modal/BasicModal";
 import Password from "../../components/Input/Password";
 import InputTextField from "../../components/Input/InputTextField";
 
-const LoginModal = ({ open, setOpen, handleOpen, buttonLabel = "login" }) => {
+const SignUpModal = ({ open, onClose, handleOpen }) => {
   // =========== USE_STATE HOOK ===============
   const [form, setForm] = useState({ username: "", password: "" });
 
@@ -22,17 +22,12 @@ const LoginModal = ({ open, setOpen, handleOpen, buttonLabel = "login" }) => {
     console.log(form);
   };
 
-  const handleClose = () => {
-    setOpen(!open);
-    setForm((prevState) => ({ ...prevState, username: "", password: "" }));
-  };
-
   return (
     <React.Fragment>
       <BasicModal
         open={open}
         handleOpen={handleOpen}
-        onClose={handleClose}
+        onClose={onClose}
         height="50%"
         width="30rem"
       >
@@ -56,7 +51,7 @@ const LoginModal = ({ open, setOpen, handleOpen, buttonLabel = "login" }) => {
             className="bg-red-500 hover:bg-red-600 rounded-full py-1 px-3 text-white font-semibold text-lg w-[80%]"
             type="submit"
           >
-            {buttonLabel}
+            sign up
           </button>
           <br />
         </form>
@@ -65,8 +60,7 @@ const LoginModal = ({ open, setOpen, handleOpen, buttonLabel = "login" }) => {
   );
 };
 
-LoginModal.propTypes = {
-  buttonLabel: PropTypes.string,
+SignUpModal.propTypes = {
   handleOpen: PropTypes.any,
   onClose: PropTypes.any,
   open: PropTypes.any,

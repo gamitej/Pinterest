@@ -8,15 +8,18 @@ import LoginModal from "../../pages/Login/LoginModal";
 export default function ButtonAppBar() {
   // =========== USE_STATE HOOK ===============
   const [open, setOpen] = useState(false);
+  const [name, setName] = useState("login");
 
   // =========== EVENT HANDLERS ===============
 
   const handleLogin = () => {
     setOpen(!open);
+    setName(() => "login");
   };
 
   const handleSignUp = () => {
     setOpen(!open);
+    setName(() => "sign up");
   };
 
   return (
@@ -46,7 +49,8 @@ export default function ButtonAppBar() {
       <LoginModal
         open={open}
         handleOpen={handleLogin}
-        onClose={() => setOpen(!open)}
+        setOpen={() => setOpen(!open)}
+        buttonLabel={name}
       />
     </React.Fragment>
   );
