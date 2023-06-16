@@ -7,6 +7,7 @@ import BasicModal from "../../components/Modal/BasicModal";
 import Password from "../../components/Input/Password";
 import InputTextField from "../../components/Input/InputTextField";
 import { useLogin } from "../../store/login/useLogin";
+import { toast } from "react-toastify";
 
 const LoginModal = ({ open, setOpen, handleOpen, buttonLabel = "login" }) => {
   // =========== STATES ===============
@@ -19,10 +20,24 @@ const LoginModal = ({ open, setOpen, handleOpen, buttonLabel = "login" }) => {
     setForm((prevState) => ({ ...prevState, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (buttonLabel === "login") {
-      callLoginApi(form);
+      const isLogin = await callLoginApi(form);
+      if (isLogin) {
+        setForm({ username: "", password: "" });
+        toast.success("login Successfull", { autoClose: 1200 });
+      } else {
+        toast.info("Wrong username / password", { autoClose: 1200 });
+      }
+    } else {
+      const isSignUp = await callSignupApi(form);
+      if (isSignUp) {
+        setForm({ username: "", password: "" });
+        toast.success("Sign-Up Successfull", { autoClose: 1200 });
+      } else {
+        toast.info("Some error occurred", { autoClose: 1200 });
+      }
     }
   };
 

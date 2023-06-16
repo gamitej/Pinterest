@@ -24,8 +24,10 @@ export const useLogin = create((set) => ({
         loading: false,
         user: data,
       }));
+      return true;
     } else {
       set((state) => ({ ...state, loading: false }));
+      return false;
     }
   },
 }));

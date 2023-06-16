@@ -1,5 +1,6 @@
-import { Suspense, lazy } from "react";
-
+import { Suspense } from "react";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 // comp
 import Navbar from "./pages/Navbar/Navbar";
 
@@ -8,6 +9,7 @@ import BasicRouter from "./routes/BasicRouter";
 function App() {
   return (
     <div>
+      <ToastContainer />
       {/* Navbar */}
       <Navbar />
       {/* Routes */}
@@ -24,7 +26,7 @@ const Loading = () => {
       className="h-[90vh] w-full flex justify-center
    items-center"
     >
-      Loading...
+      loading...
     </div>
   );
 };
