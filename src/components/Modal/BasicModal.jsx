@@ -24,7 +24,7 @@ export default function BasicModal({
         }}
       >
         <div
-          className="relative bg-white shadow-md rounded-lg p-2 border-transparent"
+          className="relative bg-white shadow-md rounded-2xl p-2 border-transparent"
           style={{ height, width }}
         >
           <button

@@ -24,13 +24,13 @@ export default function ButtonAppBar() {
 
   return (
     <React.Fragment>
-      <div className="w-full flex justify-between items-center mr-2 h-[8vh]">
+      <div className="w-full flex justify-between items-center h-[8vh]">
         {/* Title */}
         <div>
           <img src={logo} alt="logo" className="w-[11rem] h-[4rem]" />
         </div>
         {/* Buttons */}
-        <div className="flex justify-around w-[12rem] items-center">
+        <div className="flex justify-around w-[12rem] items-center  mr-2">
           <button
             className="bg-red-500 hover:bg-red-600 rounded-full py-2 px-4 text-white font-semibold text-lg"
             onClick={handleLogin}
