@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import Modal from "@mui/material/Modal";
+import CloseIcon from "@mui/icons-material/Close";
 
 export default function BasicModal({
   children,
@@ -23,9 +24,15 @@ export default function BasicModal({
         }}
       >
         <div
-          className="bg-white shadow-md rounded-lg p-2 border-transparent"
+          className="relative bg-white shadow-md rounded-lg p-2 border-transparent"
           style={{ height, width }}
         >
+          <button
+            className="absolute top-3 right-3 hover:bg-slate-100 p-1 rounded-full"
+            onClick={onClose}
+          >
+            <CloseIcon style={{ fontSize: "2rem" }} />
+          </button>
           {children}
         </div>
       </Modal>
