@@ -1,32 +1,18 @@
 import { Suspense, lazy } from "react";
-import { useLogin } from "./store/login/useLogin";
-import { Navigate, Route, Routes } from "react-router-dom";
 
-// lazy
-const Home = lazy(() => import("./pages/Home/Home"));
-const Login = lazy(() => import("./pages/Login/Login"));
 // comp
 import Navbar from "./pages/Navbar/Navbar";
-import ProtectedRoute from "./pages/Login/ProtectedRoutes";
-import PageNotFound from "./pages/PageNotFound/PageNotFound";
+
+import BasicRouter from "./routes/BasicRouter";
 
 function App() {
-  const { isLoggined } = useLogin();
-
   return (
     <div>
       {/* Navbar */}
       <Navbar />
       {/* Routes */}
       <Suspense fallback={<Loading />}>
-        <Routes>
-          <Route path="/" element={<ProtectedRoute isAuth={isLoggined} />}>
-            <Route path="/" element={<Home />} />
-            <Route path="*" element={<PageNotFound />} />
-          </Route>
-          <Route path="/login" element={<Login />} />
-          <Route path="*" element={<Navigate to="/login" />} />
-        </Routes>
+        <BasicRouter />
       </Suspense>
     </div>
   );
