@@ -1,12 +1,14 @@
 // img
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../../assests/logo.png";
 
 // comp
 import LoginModal from "../../pages/Login/LoginModal";
+import { useLogin } from "../../store/login/useLogin";
 
 export default function ButtonAppBar() {
-  // =========== USE_STATE HOOK ===============
+  // =========== STATES===============
+  const { isLoggined, setLogout } = useLogin();
   const [open, setOpen] = useState(false);
   const [name, setName] = useState("login");
 
@@ -22,6 +24,12 @@ export default function ButtonAppBar() {
     setName(() => "sign up");
   };
 
+  // =========== USE-EFFECT ===============
+
+  useEffect(() => {
+    setOpen(false);
+  }, [isLoggined]);
+
   return (
     <React.Fragment>
       <div className="w-full flex justify-between items-center h-[8vh]">
@@ -31,18 +39,32 @@ export default function ButtonAppBar() {
         </div>
         {/* Buttons */}
         <div className="flex justify-around w-[12rem] items-center  mr-2">
-          <button
-            className="bg-red-500 hover:bg-red-600 rounded-full py-2 px-4 text-white font-semibold text-lg"
-            onClick={handleLogin}
-          >
-            Log in
-          </button>
-          <button
-            className="bg-slate-200 hover:bg-slate-400 rounded-full py-2 px-4 font-semibold text-lg"
-            onClick={handleSignUp}
-          >
-            Sign up
-          </button>
+          {!isLoggined && (
+            <>
+              <button
+                className="bg-red-500 hover:bg-red-600 rounded-full py-2 px-4 text-white font-semibold text-lg"
+                onClick={handleLogin}
+              >
+                Log in
+              </button>
+              <button
+                className="bg-slate-200 hover:bg-slate-400 rounded-full py-2 px-4 font-semibold text-lg"
+                onClick={handleSignUp}
+              >
+                Sign up
+              </button>
+            </>
+          )}
+          {isLoggined && (
+            <>
+              <button
+                onClick={setLogout}
+                className="bg-red-500 hover:bg-red-600 rounded-full py-2 px-4 text-white font-semibold text-lg"
+              >
+                Logout
+              </button>
+            </>
+          )}
         </div>
       </div>
       {/* Modal */}

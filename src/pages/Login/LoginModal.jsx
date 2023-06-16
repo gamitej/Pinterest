@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 // img
 import logo from "../../assests/logo-2.png";
@@ -6,9 +6,11 @@ import logo from "../../assests/logo-2.png";
 import BasicModal from "../../components/Modal/BasicModal";
 import Password from "../../components/Input/Password";
 import InputTextField from "../../components/Input/InputTextField";
+import { useLogin } from "../../store/login/useLogin";
 
 const LoginModal = ({ open, setOpen, handleOpen, buttonLabel = "login" }) => {
-  // =========== USE_STATE HOOK ===============
+  // =========== STATES ===============
+  const { isLoggined, callLoginApi } = useLogin();
   const [form, setForm] = useState({ username: "", password: "" });
 
   // =========== EVENT HANDLERS ===============
@@ -19,7 +21,9 @@ const LoginModal = ({ open, setOpen, handleOpen, buttonLabel = "login" }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(form);
+    if (buttonLabel === "login") {
+      callLoginApi(form);
+    }
   };
 
   const handleClose = () => {
