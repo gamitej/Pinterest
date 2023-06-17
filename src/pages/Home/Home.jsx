@@ -33,7 +33,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="mt-8">
+    <div className="h-[calc(100vh-5rem)] mt-8">
       <p className="text-[2rem] font-semibold text-slate-500 text-center p-2 mb-4 font-sans">
         Explore More{" "}
       </p>
