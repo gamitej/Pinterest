@@ -74,14 +74,14 @@ const Home = () => {
 
   return (
     <div className="mt-8">
-      <p className="text-[2rem] font-semibold text-slate-500 text-center p-2 mb-4">
+      <p className="text-[2rem] font-semibold text-slate-500 text-center p-2 mb-4 font-sans">
         Explore More{" "}
       </p>
       {loading && (
         <div className="flex justify-center items-center h-[60vh]">
           <div className="flex flex-col justify-center items-center gap-y-2 h-[60vh]">
             <CircularProgress />
-            <p className="font-semibold text-slate-400">
+            <p className="font-semibold text-slate-400 font-sans">
               loading pinterests...
             </p>
           </div>
@@ -103,7 +103,7 @@ const Home = () => {
                       <img
                         src={imagePath}
                         alt="logo"
-                        className="rounded-2xl h-[20rem] opacity-[0.5] hover:opacity-[1]"
+                        className="rounded-2xl h-[auto] max-w-[100%] opacity-[0.5] hover:opacity-[1]"
                         loading="lazy"
                       />
                       <div
