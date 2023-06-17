@@ -32,7 +32,7 @@ export default function ButtonAppBar() {
 
   return (
     <React.Fragment>
-      <div className="w-full flex justify-between items-center h-[8vh]">
+      <div className="w-full flex justify-between items-center h-[12vh]">
         {/* Title */}
         <div>
           <img src={logo} alt="logo" className="w-[11rem] h-[4rem]" />

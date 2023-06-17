@@ -1,7 +1,6 @@
-import { useLogin } from "../../store/login/useLogin";
-import login from "../../assests/login.png";
 import { Navigate } from "react-router-dom";
-// import BasicModal from "../../components/Modal/BasicModal";
+import login from "../../assests/login.png";
+import { useLogin } from "../../store/login/useLogin";
 
 const Login = () => {
   const { isLoggined } = useLogin();
@@ -12,9 +11,7 @@ const Login = () => {
 
   return (
     <div className="">
-      <img src={login} alt="" className="h-[92vh] w-full" />
-
-      {/* <BasicModal /> */}
+      <img src={login} alt="" className="h-[88vh] w-full" />
     </div>
   );
 };

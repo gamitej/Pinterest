@@ -54,7 +54,7 @@ const LoginModal = ({ open, setOpen, handleOpen, buttonLabel = "login" }) => {
         open={open}
         handleOpen={handleOpen}
         onClose={handleClose}
-        height="50%"
+        height="30rem"
         width="30rem"
       >
         <form
