@@ -103,7 +103,7 @@ const Home = () => {
                       <img
                         src={imagePath}
                         alt="logo"
-                        className="rounded-2xl h-[20rem]"
+                        className="rounded-2xl h-[20rem] opacity-[0.5] hover:opacity-[1]"
                         loading="lazy"
                       />
                       <div
