@@ -5,6 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Navbar from "./pages/Navbar/Navbar";
 
 import BasicRouter from "./routes/BasicRouter";
+import { CircularProgress } from "@mui/material";
 
 function App() {
   return (
@@ -26,7 +27,9 @@ const Loading = () => {
       className="h-[90vh] w-full flex justify-center
    items-center"
     >
-      loading...
+      <div>
+        <CircularProgress />
+      </div>
     </div>
   );
 };

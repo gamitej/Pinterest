@@ -26,7 +26,7 @@ const LoginModal = ({ open, setOpen, handleOpen, buttonLabel = "login" }) => {
       const isLogin = await callLoginApi(form);
       if (isLogin) {
         setForm({ username: "", password: "" });
-        toast.success("login Successfull", { autoClose: 1200 });
+        toast.success("login Successfull", { autoClose: 800 });
         setOpen(false);
       } else {
         toast.info("Wrong username / password", { autoClose: 1200 });
@@ -35,7 +35,7 @@ const LoginModal = ({ open, setOpen, handleOpen, buttonLabel = "login" }) => {
       const isSignUp = await callSignupApi(form);
       if (isSignUp) {
         setForm({ username: "", password: "" });
-        toast.success("Sign-Up Successfull", { autoClose: 1200 });
+        toast.success("Sign-Up Successfull", { autoClose: 800 });
         setOpen(false);
       } else {
         toast.info("Some error occurred", { autoClose: 1200 });
