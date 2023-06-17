@@ -2,13 +2,13 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 axios.interceptors.response.use(null, (error) => {
-  const expectedError =
-    error.response &&
-    error.response.status >= 400 &&
-    error.response.status < 500;
-  if (!expectedError) {
+  const expectedError = error?.response?.status === 500;
+  console.log(expectedError, error?.response);
+  if (expectedError) {
     console.log("Error Has Been Occured");
-    toast.error("Error Occurred - 500", { autoClose: 1200 });
+    toast.error("Error Occurred - 500 afa", { autoClose: 1200 });
+  } else {
+    toast.error(error?.response?.data?.msg, { autoClose: 1200 });
   }
   return Promise.reject(error);
 });
