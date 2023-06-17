@@ -53,7 +53,7 @@ const Home = () => {
             {data?.map(({ username, imagePath, created, id, caption }) => (
               <div
                 key={id}
-                className="col-span-2 bg-blue-50 rounded-2xl shadow-md cursor-pointer"
+                className="col-span-2 rounded-tr-xl rounded-bl-xl rounded-tl-[2.5rem] rounded-br-[2.5rem]  cursor-pointer ease-in-out"
                 onMouseEnter={() => handleMouseEvent(id)}
                 onMouseLeave={() => setShow({ hide: false, id: "" })}
               >
@@ -62,11 +62,11 @@ const Home = () => {
                     <img
                       src={logo}
                       alt="logo"
-                      className="rounded-2xl h-[auto] max-w-[100%] opacity-[0.5] hover:opacity-[1]"
+                      className="rounded-tl-[2.5rem] rounded-br-[2.5rem] rounded-tr-xl rounded-bl-xl  h-[auto] max-w-[100%] opacity-[0.5] hover:opacity-[1] shadow-md"
                       loading="lazy"
                     />
                     <div
-                      className="absolute top-1 p-2"
+                      className="absolute top-1 p-2 ml-3 ease-in-out"
                       style={{
                         display: show.hide && show.id === id ? "" : "none",
                       }}
@@ -75,7 +75,12 @@ const Home = () => {
                         {username}
                       </p>
                     </div>
-                    <div className="absolute top-1 right-2 p-2">
+                    <div
+                      className="absolute top-1 right-2 p-2"
+                      style={{
+                        display: show.hide && show.id === id ? "" : "none",
+                      }}
+                    >
                       <p className="text-xl font-semibold capitalize text-white">
                         {handleDate(created)}
                       </p>
