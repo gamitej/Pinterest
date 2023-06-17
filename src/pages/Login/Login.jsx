@@ -11,7 +11,7 @@ const Login = () => {
 
   return (
     <div className="">
-      <img src={login} alt="" className="h-[88vh] w-full" />
+      <img src={login} alt="" className="h-[calc(100vh-5rem)] w-full" />
     </div>
   );
 };
