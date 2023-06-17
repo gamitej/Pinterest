@@ -11,7 +11,7 @@ import { toast } from "react-toastify";
 
 const LoginModal = ({ open, setOpen, handleOpen, buttonLabel = "login" }) => {
   // =========== STATES ===============
-  const { isLoggined, callLoginApi } = useLogin();
+  const { callLoginApi, callSignupApi } = useLogin();
   const [form, setForm] = useState({ username: "", password: "" });
 
   // =========== EVENT HANDLERS ===============
@@ -27,6 +27,7 @@ const LoginModal = ({ open, setOpen, handleOpen, buttonLabel = "login" }) => {
       if (isLogin) {
         setForm({ username: "", password: "" });
         toast.success("login Successfull", { autoClose: 1200 });
+        setOpen(false);
       } else {
         toast.info("Wrong username / password", { autoClose: 1200 });
       }
@@ -35,6 +36,7 @@ const LoginModal = ({ open, setOpen, handleOpen, buttonLabel = "login" }) => {
       if (isSignUp) {
         setForm({ username: "", password: "" });
         toast.success("Sign-Up Successfull", { autoClose: 1200 });
+        setOpen(false);
       } else {
         toast.info("Some error occurred", { autoClose: 1200 });
       }

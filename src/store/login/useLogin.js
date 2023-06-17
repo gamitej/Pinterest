@@ -1,4 +1,5 @@
-import { postlogin } from "../../services/ApiServices/Login/loginService";
+import { postLogin } from "../../services/ApiServices/Login/loginService";
+import { postSignup } from "../../services/ApiServices/Signup/signupService";
 import { create } from "zustand";
 import { getUser, removeUser, setUser } from "./events";
 
@@ -15,14 +16,29 @@ export const useLogin = create((set) => ({
   // login api call
   callLoginApi: async (req) => {
     set((state) => ({ ...state, loading: true }));
-    const data = await postlogin(req);
+    const data = await postLogin(req);
     if (data.msg === "success") {
       setUser(req.username);
       set((state) => ({
         ...state,
         isLoggined: true,
         loading: false,
-        user: data,
+        user: req.username,
+      }));
+      return true;
+    } else {
+      set((state) => ({ ...state, loading: false }));
+      return false;
+    }
+  },
+  // signup api call
+  callSignupApi: async (req) => {
+    set((state) => ({ ...state, loading: true }));
+    const data = await postSignup(req);
+    if (data.msg === "success") {
+      set((state) => ({
+        ...state,
+        loading: false,
       }));
       return true;
     } else {
